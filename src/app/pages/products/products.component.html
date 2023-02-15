@@ -1,0 +1,24 @@
+<div>
+  <form>
+    <div>
+    <mat-card-title>Importar Canciones</mat-card-title>
+      <mat-divider></mat-divider>
+    </div>
+    <mat-form-field>
+      <mat-label>Buscar en Spotify</mat-label>
+      <input matInput  [(ngModel)]="word" name="word">
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="onClick()" >Buscar</button>
+    &nbsp;	&nbsp;
+    <button mat-flat-button color="primary" (click)="onAddTrack()" >Agregar a bliblioteca local</button>
+  </form>
+</div>
+<section class="products">
+  <app-product
+    (addToCartClick)="addToCart($event)"
+    [track]="track"
+    *ngFor="let track of tracks">
+  </app-product>
+</section>
+
+

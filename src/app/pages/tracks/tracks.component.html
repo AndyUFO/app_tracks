@@ -1,0 +1,19 @@
+<div>
+  <form>
+    <mat-form-field>
+  <mat-label>Buscar en Spotify</mat-label>
+  <input matInput  [(ngModel)]="word" name="word">
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="onClick()" >Buscar</button>
+  </form>
+</div>
+<div>
+    <button mat-flat-button color="primary" (click)="onAddTrack()" >Agregar a bliblioteca local</button>
+</div>
+<section class="products">
+  <app-track
+    (addToCartClick)="addToCart($event)"
+    [track]="track"
+             *ngFor="let track of tracks">
+  </app-track>
+</section>

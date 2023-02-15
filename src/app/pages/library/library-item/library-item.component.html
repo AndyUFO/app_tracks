@@ -1,0 +1,15 @@
+<mat-card class="card">
+  <mat-card-title>
+    {{track.id}} : {{track.name}}
+  </mat-card-title>
+  <mat-card-header>
+    IdSpotify :{{track.idSpotify}}
+  </mat-card-header>
+  <mat-card-content>
+    <a href = "https://open.spotify.com/track/{{track.idSpotify}}" target="_blank">Reproducir track</a>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button color="primary" (click)="onDelete()"
+    >Borrar <mat-icon>add_shopping_cart</mat-icon></button>
+  </mat-card-actions>
+</mat-card>
