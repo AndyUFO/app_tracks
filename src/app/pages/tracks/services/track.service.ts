@@ -10,7 +10,7 @@ import {ShoppingCartService} from "../../../shared/services/shopping-cart.servic
 })
 export class TrackService {
   //private apiURL="http://localhost:3000/tracks";
-  private apiURL="localhost:8080/spotify/dog/15";
+  private apiURL="http://localhost:8080/spotify/war/15";
   private apiURL_Library="http://localhost:3000/library"
 
   constructor(private http: HttpClient,private cartService:ShoppingCartService) { }
