@@ -1,27 +1,37 @@
 # AppTracks
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
+Plataforma web de consulta a la base de datos de spotify
 
-## Development server
+Nombre : Andres González Pascual
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Correo: deepdish303@gmail.com
 
-## Code scaffolding
+# Objetivos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Proporcionar una interfaz web (frontend) que permita la interacción con la API Tracks :
 
-## Build
+https://github.com/AndyUFO/api_tracks 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Descripción de la aplicación
 
-## Running unit tests
+La plataforma web consta de 3 modulos principales :
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1.-Login : Pagina que permite introducir las credenciales para loguearse en la plataforma
 
-## Running end-to-end tests
+2.-Importar canciones: Modulo para realizar busquedas de canciones en la API de spotify
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3.-Biblioteca: Listado de todas las canciones guardadas en la base de datos local
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Alcance de la aplicación
+
+# Usuarios
+
+|USUARIO| MODULOS CON ACCESO | 
+|--|----------------------------------------|
+|ADMIN| Importar canciones/Biblioteca |
+|USER| Biblioteca                       | 
+
+# Tecnologias utilizadas
+
+`Angular 15.1.4`
