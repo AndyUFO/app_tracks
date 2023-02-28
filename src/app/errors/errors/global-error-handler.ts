@@ -13,13 +13,20 @@ export class GlobalErrorHandler implements ErrorHandler {
   handleError(error: Error) {
     console.error(error.message);
     if (error instanceof HttpErrorResponse) {
-      console.error(error);
-      console.error(error.error);
-      const obj = JSON.parse(JSON.stringify(error.error));
+
+      let errMsj !:string;
+
+      if(error.message==undefined){
+        const obj = JSON.parse(JSON.stringify(error.error));
+        errMsj=obj.error+"\n"+obj.mensaje;
+      }else{
+        errMsj=error.message;
+      }
+      console.error(errMsj);
 
       this.zone.run(() =>
         this.errorDialogService.openDialog(
-          obj.mensaje ,error.status
+        errMsj,error.status
         )
       );
     } else {

@@ -21,6 +21,7 @@ import { LoadingDialogComponent } from './shared/components/loading-dialog/loadi
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { ErrorsModule } from './errors/errors.module';
+import { InfoDialogComponent } from './shared/components/info-dialog/info-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ErrorsModule } from './errors/errors.module';
     CartComponent,
     FooterComponent,
     ErrorDialogComponent,
-    LoadingDialogComponent
+    LoadingDialogComponent,
+    InfoDialogComponent
   ],
   imports: [
     BrowserModule,

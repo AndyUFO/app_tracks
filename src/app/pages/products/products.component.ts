@@ -1,9 +1,11 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, NgZone, OnChanges, OnInit} from '@angular/core';
 import {tap} from "rxjs";
 import {TrackModel} from "../tracks/interface/track.interface";
 import {TrackService} from "../tracks/services/track.service";
 import {ShoppingCartService} from "../../shared/services/shopping-cart.service";
 import {FormControl, Validators} from "@angular/forms";
+import {ErrorDialogService} from "../../shared/services/error-dialog.service.service";
+import {InfoDialogService} from "../../shared/services/info-dialog.service";
 
 @Component({
   selector: 'app-products',
@@ -16,7 +18,8 @@ export class ProductsComponent implements OnInit{
   cantidad!: number;
   textFormControl= new FormControl("",Validators.required);
   selectFormControl= new FormControl("",Validators.required);
-  constructor(private trackService:TrackService,private shoppingCartSvc:ShoppingCartService) {
+
+  constructor(private trackService:TrackService,private shoppingCartSvc:ShoppingCartService,private infoDialogService: InfoDialogService) {
   }
 
   ngOnInit(): void {
@@ -54,7 +57,13 @@ export class ProductsComponent implements OnInit{
         console.log('Respuesta en caso de que la solicitud retorne un estado success: ', respuesta);
       });
     }
-    alert("Se agregaron "+this.shoppingCartSvc.tracks.length+" tracks");
+    if(this.shoppingCartSvc.tracks.length==0){
+      throw Error("No se han agregado canciones para importar");
+    }else{
+        this.infoDialogService.openDialog(
+           "Se agregaron "+this.shoppingCartSvc.tracks.length +" canciones a la biblioteca local"
+        );
+    }
     this.shoppingCartSvc.emptyCart();
   }
 }
