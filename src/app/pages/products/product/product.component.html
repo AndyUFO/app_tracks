@@ -9,6 +9,6 @@
     <a href = "https://open.spotify.com/track/{{track.idSpotify}}" target="_blank">Reproducir track</a>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-flat-button color="primary" (click)="onClick()">Importar <mat-icon>download</mat-icon></button>
+    <button mat-flat-button color="primary" (click)="onClick()"  [disabled]="[addedToCart]">Importar <mat-icon>download</mat-icon></button>
   </mat-card-actions>
 </mat-card>

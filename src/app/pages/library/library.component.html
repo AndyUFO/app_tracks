@@ -6,7 +6,7 @@
     </div>
     <mat-form-field>
       <mat-label>Buscar por ID en libreria</mat-label>
-      <input matInput  [(ngModel)]="id" name="id">
+      <input type="number" matInput  [(ngModel)]="id" name="id" required>
     </mat-form-field>
     <button mat-flat-button color="primary" (click)="onFindByID()" >Buscar</button>
     &nbsp;&nbsp;

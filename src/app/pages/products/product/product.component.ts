@@ -10,12 +10,14 @@ import {TrackModel} from "../../tracks/interface/track.interface";
 export class ProductComponent implements OnInit{
   @Input() track!:TrackModel;
   @Output() addToCartClick=new EventEmitter<TrackModel>();
+  addedToCart:boolean=false;
   constructor() {
   }
   ngOnInit(): void {
   }
 
   onClick():void{
+    this.addedToCart=true;
     this.addToCartClick.emit(this.track);
   }
 
