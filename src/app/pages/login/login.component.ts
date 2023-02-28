@@ -7,25 +7,29 @@ import {Router} from "@angular/router"
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  email!: string;
+  usuario!: string;
   password!: string;
 
   constructor(private router: Router) { }
 
   login() {
-    console.log("usuario: "+this.email);
-    console.log("password: "+this.password);
-    if(this.email=="user" && this.password=="user"){
+    if(this.usuario=="user" && this.password=="user"){
       localStorage.setItem("usuario","user");
       localStorage.setItem("isValid","true");
       this.router.navigate(['/library'])
-    }else if(this.email=="admin" && this.password=="admin"){
+    }else if(this.usuario=="admin" && this.password=="admin"){
       localStorage.setItem("usuario","admin");
       localStorage.setItem("isValid","true");
       this.router.navigate(['/spotify'])
     }else{
       localStorage.setItem("isValid","false");
-      alert("usuario no valido");
+      if(this.usuario==undefined){
+        throw Error("Debe ingresar el nombre de usuario");
+      }else if (this.password==undefined){
+        throw Error("Debe ingresar el password");
+      }else{
+        throw Error("Usuario no valido");
+      }
     }
   }
 

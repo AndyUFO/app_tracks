@@ -17,8 +17,8 @@ export class LibraryComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.tracks=[]
-    this.trackService.getTracksLibrary().subscribe(track => {
+   /* this.tracks=[]
+    //this.trackService.getTracksLibrary().subscribe(track => {
 
     },(error: any)=>{
       //alert("Id "+this.id+" no encontrado");

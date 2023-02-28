@@ -8,10 +8,11 @@ import {MaterialModule} from "../../material.module";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LibraryModule} from "../library/library.module";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatListModule} from "@angular/material/list";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import {MatListModule} from "@angular/material/list";
     FormsModule,
     LibraryModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductsModule { }

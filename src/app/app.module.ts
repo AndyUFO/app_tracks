@@ -16,13 +16,20 @@ import { LoginModule } from './pages/login/login.module';
 import {AuthGuard} from "./guards/auth.guard";
 import {AuthUserGuard} from "./guards/auth-user.guard";
 import {AuthAdminGuard} from "./guards/auth-admin.guard";
+import { ErrorDialogComponent } from './shared/components/error-dialog/error-dialog.component';
+import { LoadingDialogComponent } from './shared/components/loading-dialog/loading-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { ErrorsModule } from './errors/errors.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CartComponent,
-    FooterComponent
+    FooterComponent,
+    ErrorDialogComponent,
+    LoadingDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +40,10 @@ import {AuthAdminGuard} from "./guards/auth-admin.guard";
     HttpClientModule,
     MatTabsModule,
     MatDividerModule,
-    LoginModule
+    LoginModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    ErrorsModule
   ],
   providers: [AuthGuard,AuthUserGuard,AuthAdminGuard],
   bootstrap: [AppComponent]

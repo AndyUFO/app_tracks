@@ -9,13 +9,15 @@ import {ShoppingCartService} from "../../../shared/services/shopping-cart.servic
   providedIn: 'root'
 })
 export class TrackService {
-  //private apiURL="http://localhost:3000/tracks";
-  private apiURL="http://localhost:8080/spotify/war/15";
-  private apiURL_Library="http://localhost:3000/library"
+  private apiURL="http://localhost:8080/spotify/";
+  private apiURL_Library="http://localhost:8080/track"
 
   constructor(private http: HttpClient,private cartService:ShoppingCartService) { }
   getTracks():Observable<TrackModel[]>{
     return this.http.get<TrackModel[]>(this.apiURL);
+  }
+  getTracksByWord(word:string,cantidad:number):Observable<TrackModel[]>{
+    return this.http.get<TrackModel[]>(this.apiURL+word+"/"+cantidad);
   }
   getTracksLibrary():Observable<TrackModel[]>{
     return this.http.get<TrackModel[]>(this.apiURL_Library);
@@ -26,7 +28,7 @@ export class TrackService {
   saveTrack(track:TrackModel):Observable<TrackModel>{
     console.log("entrando a save")
 
-      return this.http.post<TrackModel>("http://localhost:3000/library",track);
+      return this.http.post<TrackModel>(this.apiURL_Library,track);
     }
 
   library_findByID(id:number):Observable<TrackModel>{

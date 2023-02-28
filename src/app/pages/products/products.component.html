@@ -4,10 +4,25 @@
     <mat-card-title>Importar Canciones</mat-card-title>
       <mat-divider></mat-divider>
     </div>
-    <mat-form-field>
-      <mat-label>Buscar en Spotify</mat-label>
-      <input matInput  [(ngModel)]="word" name="word">
+    <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Buscar canción en Spotify...</mat-label>
+      <input matInput  [(ngModel)]="word"  [formControl]="textFormControl" name="word" required>
+      <mat-error *ngIf="textFormControl.hasError('required')">Ingresar una palabra de busqueda</mat-error>
     </mat-form-field>
+      &nbsp;	&nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Cantidad</mat-label>
+        <mat-select [(ngModel)]="cantidad"  [formControl]="selectFormControl" name="cantidad"  required>
+          <mat-option value="1" >1</mat-option>
+          <mat-option value="5" >5</mat-option>
+          <mat-option value="10">10</mat-option>
+          <mat-option value="15">15</mat-option>
+          <mat-option value="20">20</mat-option>
+        </mat-select>
+        <mat-error *ngIf="selectFormControl.hasError('required')">Seleccionar un numero valido</mat-error>
+      </mat-form-field>
+    </div>
     <button mat-flat-button color="primary" (click)="onClick()" >Buscar</button>
     &nbsp;	&nbsp;
     <button mat-flat-button color="primary" (click)="onAddTrack()" >Agregar a bliblioteca local</button>

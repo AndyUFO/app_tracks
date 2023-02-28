@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {tap} from "rxjs";
 import {TrackModel} from "../tracks/interface/track.interface";
 import {TrackService} from "../tracks/services/track.service";
 import {ShoppingCartService} from "../../shared/services/shopping-cart.service";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-products',
@@ -12,13 +13,14 @@ import {ShoppingCartService} from "../../shared/services/shopping-cart.service";
 export class ProductsComponent implements OnInit{
   tracks!:TrackModel[];
   word!: string;
+  cantidad!: number;
+  textFormControl= new FormControl("",Validators.required);
+  selectFormControl= new FormControl("",Validators.required);
   constructor(private trackService:TrackService,private shoppingCartSvc:ShoppingCartService) {
   }
 
   ngOnInit(): void {
-    /*this.trackService.getTracks()
-      .pipe(tap((tracks:TrackModel[])=>this.tracks=tracks))
-      .subscribe();*/
+
   }
 
   addToCart(track:TrackModel):void {
@@ -28,9 +30,18 @@ export class ProductsComponent implements OnInit{
   }
 
   onClick() {
-    this.trackService.getTracks()
-      .pipe(tap((tracks:TrackModel[])=>this.tracks=tracks))
-      .subscribe();
+    console.log("word :'"+this.word+"'");
+    if(this.word==undefined || this.word==""){
+      console.log("word is undefined")
+      throw Error("Debe ingresar una palabra de busqueda");
+    }else if(this.cantidad==undefined){
+      throw Error("Debe ingresar un limite de busqueda");
+    }else{
+      this.trackService.getTracksByWord(this.word,this.cantidad)
+        .pipe(tap((tracks:TrackModel[])=>this.tracks=tracks))
+        .subscribe();
+    }
+
   }
 
   onAddTrack() {

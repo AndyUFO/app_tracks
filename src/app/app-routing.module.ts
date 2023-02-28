@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AuthGuard} from "./guards/auth.guard";
 import {AuthAdminGuard} from "./guards/auth-admin.guard";
-import {AuthUserGuard} from "./guards/auth-user.guard";
+
 
 const routes: Routes = [
   //{ path: 'tracks', loadChildren: () => import('./pages/tracks/tracks.module').then(m => m.TracksModule) },
