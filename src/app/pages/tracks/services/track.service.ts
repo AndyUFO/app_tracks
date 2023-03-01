@@ -47,4 +47,7 @@ export class TrackService {
     return this.http.delete<TrackModel>(this.apiURL_Library+"/"+id);
   }
 
+  library_edit(track: TrackModel):Observable<TrackModel>{
+    return this.http.put<TrackModel>(this.apiURL_Library+"/"+track.id,track);
+  }
 }

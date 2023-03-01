@@ -5,7 +5,7 @@ import { LibraryRoutingModule } from './library-routing.module';
 import { LibraryComponent } from './library.component';
 import { LibraryItemComponent } from './library-item/library-item.component';
 import {MaterialModule} from "../../material.module";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -31,7 +31,8 @@ import {MatListModule} from "@angular/material/list";
         MatFormFieldModule,
         MatInputModule,
         TracksModule,
-        MatListModule
+        MatListModule,
+        ReactiveFormsModule
     ]
 })
 export class LibraryModule { }

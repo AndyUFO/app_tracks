@@ -1,4 +1,4 @@
-<mat-card class="card" visi xmlns="http://www.w3.org/1999/html">
+<mat-card class="card"  xmlns="http://www.w3.org/1999/html">
   <mat-card-title>
     {{track.id}} : {{track.name}}
   </mat-card-title>
@@ -10,7 +10,7 @@
     <br>
     <mat-form-field class="example-full-width">
       <mat-label>Descripción:</mat-label>
-      <textarea matInput disabled="true">{{track.description}}</textarea>
+      <textarea  matInput [(ngModel)]="descripcion" [disabled]="isDisabledText" maxlength="100">{{track.description}}</textarea>
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
@@ -18,11 +18,11 @@
     >Borrar
       <mat-icon>delete</mat-icon>
     </button> &nbsp;&nbsp;
-    <button mat-flat-button color="primary" (click)="onDelete()"
+    <button mat-flat-button color="primary" (click)="onEdit()" [disabled]="[isDisabledEdit]"
     >Editar
       <mat-icon>edit</mat-icon>
     </button> &nbsp;&nbsp;
-    <button mat-flat-button color="primary" (click)="onDelete()"
+    <button mat-flat-button color="primary" (click)="onSave()" [disabled]="[isDisabledSave]"
     >Guardar
       <mat-icon>save</mat-icon>
     </button>

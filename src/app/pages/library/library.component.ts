@@ -92,4 +92,15 @@ export class LibraryComponent implements OnInit {
     });
     */
   }
+
+  EditItem(track: TrackModel) {
+    console.log("Editar Item ", track);
+    this.trackService.library_edit(track).subscribe(response=> {
+      console.log("Editando item :" + track.id);
+      this.infoDialogService.openDialog(
+        "Id: " + track.id + " actualizado correctamente"
+      );
+    });
+
+  }
 }

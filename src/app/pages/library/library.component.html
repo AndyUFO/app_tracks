@@ -17,6 +17,7 @@
 <section class="products">
   <app-library-item
     (onDeleteClick)="DeleteItem($event)"
+    (onSaveClick)="EditItem($event)"
     [track]="track"
     *ngFor="let track of tracks">
   </app-library-item>
