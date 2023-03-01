@@ -5,8 +5,12 @@
   <mat-card-header>
     IdSpotify :{{track.idSpotify}}
   </mat-card-header>
+  <br>
   <mat-card-content>
+    Creado el :{{createdAt|date:'short'}}
+    <br>
     <a href="https://open.spotify.com/track/{{track.idSpotify}}" target="_blank">Reproducir track</a>
+    <br>
     <br>
     <mat-form-field class="example-full-width">
       <mat-label>Descripción:</mat-label>

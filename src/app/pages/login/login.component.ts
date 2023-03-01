@@ -25,9 +25,9 @@ export class LoginComponent {
       this.router.navigate(['/music'])
     }else{
       localStorage.setItem("isValid","false");
-      if(this.usuario==undefined){
+      if(this.usuario==undefined || this.usuario==""){
         throw Error("Debe ingresar el nombre de usuario");
-      }else if (this.password==undefined){
+      }else if (this.password==undefined || this.password==""){
         throw Error("Debe ingresar el password");
       }else{
         throw Error("Usuario no valido");

@@ -69,28 +69,6 @@ export class LibraryComponent implements OnInit {
         if (value.id == track.id) this.tracks.splice(index, 1);
       });
     });
-    /*
-    this.trackService.library_deleteID(track.id)
-      .pipe(
-        tap(_=>console.log("exito")),
-      catchError((error:any) =>{
-        throw Error("error");
-      })).subscribe();*/
-    /*
-    this.trackService.library_deleteID(track.id).subscribe((response: any) => {
-      this.infoDialogService.openDialog(
-        "Id: " + track.id + " borrado correctamente"
-      );
-
-      this.tracks.forEach((value: TrackModel, index: number) => {
-        if (value.id == track.id) this.tracks.splice(index, 1);
-      });
-    }, (error: any) => {
-      if(error.status==403){
-        throw Error ("Error de permisos en la API");
-      }
-    });
-    */
   }
 
   EditItem(track: TrackModel) {

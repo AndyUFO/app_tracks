@@ -15,6 +15,7 @@ import {InfoDialogService} from "../../shared/services/info-dialog.service";
 export class ProductsComponent implements OnInit {
   tracks!: TrackModel[];
   word!: string;
+  full_word!:string;
   cantidad!: number;
   textFormControl = new FormControl("", Validators.required);
   selectFormControl = new FormControl("", Validators.required);
@@ -40,7 +41,9 @@ export class ProductsComponent implements OnInit {
     } else if (this.cantidad == undefined) {
       throw Error("Debe ingresar un limite de busqueda");
     } else {
-      this.trackService.getTracksByWord(this.word, this.cantidad)
+      this.full_word=this.word.replaceAll(" ","+");
+      console.log("word completa"+this.full_word);
+      this.trackService.getTracksByWord(this.full_word, this.cantidad)
         .pipe(tap((tracks: TrackModel[]) => this.tracks = tracks))
         .subscribe();
     }

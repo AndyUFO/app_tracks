@@ -14,6 +14,7 @@ export class LibraryItemComponent implements OnInit{
   isDisabledText!: boolean;
   isDisabledEdit!: boolean;
   isDisabledSave!: boolean;
+  createdAt!: string;
   constructor() {
 
   }
@@ -22,6 +23,7 @@ export class LibraryItemComponent implements OnInit{
     this.isDisabledEdit=false;
     this.isDisabledSave=true;
     this.descripcion=this.track.description;
+    this.createdAt=this.track.createdAt;
   }
 
   onDelete():void {

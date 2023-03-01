@@ -18,15 +18,7 @@ export class TrackService {
     return this.http.get<TrackModel[]>(this.apiURL);
   }
   getTracksByWord(word:string,cantidad:number):Observable<TrackModel[]>{
-/*
-    const headers = new HttpHeaders();
-
-    headers.append('Authorization', 'Basic ' +
-      window.btoa(localStorage.getItem('usuario')+":"+localStorage.getItem('password')));
-*/
     return this.http.get<TrackModel[]>(this.apiURL+word+"/"+cantidad);
-    //return this.http.get<TrackModel[]>(this.apiURL+word+"/"+cantidad,{headers:headers});
-    //return this.http.get<TrackModel[]>(this.apiURL+word+"/"+cantidad);
   }
   getTracksLibrary():Observable<TrackModel[]>{
     return this.http.get<TrackModel[]>(this.apiURL_Library);

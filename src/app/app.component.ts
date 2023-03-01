@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    //todo cambiar a false para presentacion
-    localStorage.setItem("isValid","true");
+    localStorage.setItem("isValid","false");
   }
 }
