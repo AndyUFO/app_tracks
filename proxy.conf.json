@@ -1,0 +1,10 @@
+{
+  "/spotify": {
+    "target":"http://localhost:8080/",
+    "secure":false
+  },
+  "/track": {
+    "target":"http://localhost:8080/",
+    "secure":false
+  }
+}

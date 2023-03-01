@@ -6,7 +6,7 @@ import {AuthAdminGuard} from "./guards/auth-admin.guard";
 
 const routes: Routes = [
   //{ path: 'tracks', loadChildren: () => import('./pages/tracks/tracks.module').then(m => m.TracksModule) },
-  { path: 'spotify', loadChildren: () => import('./pages/products/products.module').then(m => m.ProductsModule),canActivate :[AuthAdminGuard] },
+  { path: 'music', loadChildren: () => import('./pages/products/products.module').then(m => m.ProductsModule),canActivate :[AuthAdminGuard] },
   { path: 'library', loadChildren: () => import('./pages/library/library.module').then(m => m.LibraryModule) ,canActivate :[AuthGuard]},
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
   { path: 'logout', loadChildren: () => import('./pages/logout/logout.module').then(m => m.LogoutModule) },

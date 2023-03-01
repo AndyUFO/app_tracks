@@ -15,12 +15,14 @@ export class LoginComponent {
   login() {
     if(this.usuario=="user" && this.password=="user"){
       localStorage.setItem("usuario","user");
+      localStorage.setItem("password","user");
       localStorage.setItem("isValid","true");
       this.router.navigate(['/library'])
     }else if(this.usuario=="admin" && this.password=="admin"){
       localStorage.setItem("usuario","admin");
+      localStorage.setItem("password","admin");
       localStorage.setItem("isValid","true");
-      this.router.navigate(['/spotify'])
+      this.router.navigate(['/music'])
     }else{
       localStorage.setItem("isValid","false");
       if(this.usuario==undefined){

@@ -7,7 +7,7 @@ import {FormsModule} from "@angular/forms";
 import {HeaderComponent} from "./shared/components/header/header.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CartComponent} from "./shared/components/cart/cart.component";
 import { FooterComponent } from './shared/components/footer/footer.component';
 import {MatTabsModule} from "@angular/material/tabs";
@@ -22,6 +22,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { ErrorsModule } from './errors/errors.module';
 import { InfoDialogComponent } from './shared/components/info-dialog/info-dialog.component';
+import {HttpInterceptorService} from "./guards/http-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,10 @@ import { InfoDialogComponent } from './shared/components/info-dialog/info-dialog
     MatProgressSpinnerModule,
     ErrorsModule
   ],
-  providers: [AuthGuard,AuthUserGuard,AuthAdminGuard],
+  providers: [AuthGuard,AuthUserGuard,AuthAdminGuard,
+    {provide :HTTP_INTERCEPTORS,
+    useClass:HttpInterceptorService,
+    multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

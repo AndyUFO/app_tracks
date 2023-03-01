@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {TrackModel} from "../interface/track.interface";
 import{HttpHeaders} from "@angular/common/http";
 import {ShoppingCartService} from "../../../shared/services/shopping-cart.service";
@@ -9,15 +9,24 @@ import {ShoppingCartService} from "../../../shared/services/shopping-cart.servic
   providedIn: 'root'
 })
 export class TrackService {
-  private apiURL="http://localhost:8080/spotify/";
-  private apiURL_Library="http://localhost:8080/track"
+  private apiURL="/spotify/";
+  private apiURL_Library="http://localhost:8080/track";
+
 
   constructor(private http: HttpClient,private cartService:ShoppingCartService) { }
   getTracks():Observable<TrackModel[]>{
     return this.http.get<TrackModel[]>(this.apiURL);
   }
   getTracksByWord(word:string,cantidad:number):Observable<TrackModel[]>{
+/*
+    const headers = new HttpHeaders();
+
+    headers.append('Authorization', 'Basic ' +
+      window.btoa(localStorage.getItem('usuario')+":"+localStorage.getItem('password')));
+*/
     return this.http.get<TrackModel[]>(this.apiURL+word+"/"+cantidad);
+    //return this.http.get<TrackModel[]>(this.apiURL+word+"/"+cantidad,{headers:headers});
+    //return this.http.get<TrackModel[]>(this.apiURL+word+"/"+cantidad);
   }
   getTracksLibrary():Observable<TrackModel[]>{
     return this.http.get<TrackModel[]>(this.apiURL_Library);

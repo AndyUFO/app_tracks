@@ -1,4 +1,4 @@
-<mat-card class="card" visi>
+<mat-card class="card" visi xmlns="http://www.w3.org/1999/html">
   <mat-card-title>
     {{track.id}} : {{track.name}}
   </mat-card-title>
@@ -6,10 +6,25 @@
     IdSpotify :{{track.idSpotify}}
   </mat-card-header>
   <mat-card-content>
-    <a href = "https://open.spotify.com/track/{{track.idSpotify}}" target="_blank">Reproducir track</a>
+    <a href="https://open.spotify.com/track/{{track.idSpotify}}" target="_blank">Reproducir track</a>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Descripción:</mat-label>
+      <textarea matInput disabled="true">{{track.description}}</textarea>
+    </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
     <button mat-flat-button color="primary" (click)="onDelete()"
-    >Borrar <mat-icon>delete</mat-icon></button>
+    >Borrar
+      <mat-icon>delete</mat-icon>
+    </button> &nbsp;&nbsp;
+    <button mat-flat-button color="primary" (click)="onDelete()"
+    >Editar
+      <mat-icon>edit</mat-icon>
+    </button> &nbsp;&nbsp;
+    <button mat-flat-button color="primary" (click)="onDelete()"
+    >Guardar
+      <mat-icon>save</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>

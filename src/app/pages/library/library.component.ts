@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {TrackModel} from "../tracks/interface/track.interface";
 import {TrackService} from "../tracks/services/track.service";
 import {ShoppingCartService} from "../../shared/services/shopping-cart.service";
-import {tap} from "rxjs";
+import {catchError, tap} from "rxjs";
 import {InfoDialogService} from "../../shared/services/info-dialog.service";
+import {__assign} from "tslib";
 
 @Component({
   selector: 'app-library',
@@ -19,15 +20,7 @@ export class LibraryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /* this.tracks=[]
-     //this.trackService.getTracksLibrary().subscribe(track => {
 
-     },(error: any)=>{
-       //alert("Id "+this.id+" no encontrado");
-     });
-     /*this.trackService.getTracksLibrary()
-       .pipe(tap((tracks:TrackModel[])=>this.tracks=tracks))
-       .subscribe();*/
   }
 
   onFindByID() {
@@ -54,7 +47,7 @@ export class LibraryComponent implements OnInit {
 
   onClick() {
     this.trackService.getTracks()
-      .pipe(tap((tracks: TrackModel[]) => this.tracks = tracks))
+      .pipe(tap((tracks: TrackModel[]) => this.tracks = tracks,))
       .subscribe();
   }
 
@@ -66,18 +59,37 @@ export class LibraryComponent implements OnInit {
 
   DeleteItem(track: TrackModel): void {
     console.log("Borrar Item ", track);
+    this.trackService.library_deleteID(track.id).subscribe(response=> {
+      console.log("Borrado item :" + track.id);
+      this.infoDialogService.openDialog(
+        "Id: " + track.id + " borrado correctamente"
+      );
+
+      this.tracks.forEach((value: TrackModel, index: number) => {
+        if (value.id == track.id) this.tracks.splice(index, 1);
+      });
+    });
+    /*
+    this.trackService.library_deleteID(track.id)
+      .pipe(
+        tap(_=>console.log("exito")),
+      catchError((error:any) =>{
+        throw Error("error");
+      })).subscribe();*/
+    /*
     this.trackService.library_deleteID(track.id).subscribe((response: any) => {
-      console.log('Respuesta en caso de que la solicitud retorne un estado success: ', response);
+      this.infoDialogService.openDialog(
+        "Id: " + track.id + " borrado correctamente"
+      );
+
+      this.tracks.forEach((value: TrackModel, index: number) => {
+        if (value.id == track.id) this.tracks.splice(index, 1);
+      });
     }, (error: any) => {
-      //alert("Id " + this.id + " no encontrado");
+      if(error.status==403){
+        throw Error ("Error de permisos en la API");
+      }
     });
-
-    this.infoDialogService.openDialog(
-      "Id: " + track.id + " borrado correctamente"
-    );
-
-    this.tracks.forEach((value: TrackModel, index: number) => {
-      if (value.id == track.id) this.tracks.splice(index, 1);
-    });
+    */
   }
 }

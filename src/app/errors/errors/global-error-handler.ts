@@ -17,12 +17,13 @@ export class GlobalErrorHandler implements ErrorHandler {
       console.error(JSON.stringify(error.error));
       let errMsj !:string;
 
-      if(JSON.parse(JSON.stringify(error.error)).mensaje==undefined){
+      if(error.status==403){
+        errMsj="Error de permisos en la API";
+      }else if(JSON.parse(JSON.stringify(error.error)).mensaje==undefined){
         errMsj=error.message;
       }else{
         errMsj=JSON.parse(JSON.stringify(error.error)).mensaje;
       }
-
       this.zone.run(() =>
         this.errorDialogService.openDialog(
           errMsj,error.status
